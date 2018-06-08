@@ -1,8 +1,8 @@
-<Files ~ "^.*\.(LOG|log|bak|bk|LCK)">
+<FilesMatch "^.*\.(LOG|log|bak|bk|LCK)">
   Order allow,deny
   Deny from all
   Satisfy All
-</Files>
+</FilesMatch>
 
 <ifModule mod_headers.c>
   Header set Connection keep-alive
@@ -10,17 +10,23 @@
 
 <ifModule mod_expires.c>
 ExpiresActive On
-ExpiresDefault "access plus 1 week"
-ExpiresByType image/jpg "access plus 1 day"
-ExpiresByType image/jpeg "access plus 1 day"
-ExpiresByType image/gif "access plus 1 day"
-ExpiresByType image/png "access plus 1 day"
-ExpiresByType text/css "access plus 1 day"
-ExpiresByType application/pdf "access plus 1 day"
-ExpiresByType text/x-javascript "access plus 1 day"
-ExpiresByType application/x-shockwave-flash "access plus 1 day"
-ExpiresByType image/x-icon "access plus 1 day"
+ExpiresDefault "access plus 1 year"
+ExpiresByType image/jpg "access plus 30 days"
+ExpiresByType image/gif "access plus 30 days"
+ExpiresByType image/png "access plus 30 days"
+ExpiresByType application/pdf "access plus 30 days"
+ExpiresByType image/x-icon "access plus 30 days"
 </ifModule>
+
+<filesMatch "\.(html|js|css)$">
+  FileETag None
+  <ifModule mod_headers.c>
+     Header unset ETag
+     Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+     Header set Pragma "no-cache"
+     Header set Expires "Sun, 25 Nov 1984 05:00:00 GMT"
+  </ifModule>
+</filesMatch>
 
 # BEGIN GZIP
 <ifmodule mod_deflate.c>
