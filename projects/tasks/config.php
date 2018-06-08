@@ -9,19 +9,25 @@ if ( isset( $_GET['err'] ) &&
 
 }
 
-define( 'ROOT_PATH', dirname( dirname( dirname( __FILE__ ) ) ) );
+define( 'ROOT_PATH', realpath( __DIR__ . '/../../..' ) );
 
-define( 'ABS_PATH', dirname( dirname( __FILE__ ) ) );
+define( 'ABS_PATH', realpath( __DIR__ . '/../..' ) );
 
 define( 'CREDENTIALS_PATH', ROOT_PATH . '/credentials' );
 
 define( 'INCLUDES_PATH', ABS_PATH . '/includes' );
 
-define( 'API_PATH', ABS_PATH . '/api' );
-
 require_once( ABS_PATH . '/vendor/autoload.php' );
 
-require_once(  INCLUDES_PATH . '/database-instance.php' );
+require_once( CREDENTIALS_PATH . '/sql.php' );
+
+$db = new MysqliDb( [
+  'host' => DB_HOST,
+  'username' => DB_USER,
+  'password' => DB_PASS,
+  'db'=> 'tasks',
+  'port' => DB_PORT
+] );
 
 require_once(  INCLUDES_PATH . '/api-class.php' );
 
