@@ -25,7 +25,7 @@ $db = new MysqliDb( [
   'host' => DB_HOST,
   'username' => DB_USER,
   'password' => DB_PASS,
-  'db'=> 'tasks',
+  'db'=> 'TaskManager',
   'port' => DB_PORT
 ] );
 
