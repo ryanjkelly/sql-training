@@ -48,21 +48,21 @@ app.fn.addLesson({
   page: 231,
   slug: 'lesson-1b',
   name: 'Lesson 1b',
-  desc: 'This statement will populate all your database tables.'
+  desc: 'This statement will populate all the database tables.'
 });
 
 app.fn.addLesson({
   page: 14,
   slug: 'lesson-2a',
   name: 'Lesson 2a',
-  desc: 'This statement will get all your products.'
+  desc: 'This statement will get all the products.'
 });
 
 app.fn.addLesson({
-  page: 15,
+  page: 17,
   slug: 'lesson-2b',
   name: 'Lesson 2b',
-  desc: 'This statement will...'
+  desc: 'This statement will get the id, name and price for all the products.'
 });
 
 Vue.component( 'lesson', {
