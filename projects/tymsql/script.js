@@ -15,6 +15,7 @@ app.fn.initLessonSearch = function() {
 }
 
 app.main.initial_data = {
+  api_url_base: '/sql/projects/tymsql',
   db_query: '...',
   db_render: '...',
   json_response: '...',
@@ -108,7 +109,7 @@ app.main.instance = new Vue({
       axios({
 
         method: 'get',
-        url: '/sql/projects/tymsql/' + lesson + '/?cache=0'
+        url: this.api_url_base + '/' + lesson + '/?cache=0'
 
       }).then( function( resp ) {
 
@@ -126,15 +127,6 @@ app.main.instance = new Vue({
   },
   mounted: function() {
     this.$nextTick(function () {
-      // this.runLesson( 'lesson-0a' );
-      // console.info( 'main app loaded' );
-      // launch quick search
-      // this.lessons_list = new List( 'lesson-list', {
-      //   // listClass: 'search-area',
-      //   valueNames: ['card-title','card-text','lesson__button'],
-      //   searchClass: 'lesson-search-field'
-      // });
-      // var testList = new List( 'lesson-list' );
       app.fn.initLessonSearch();
     });
   }
