@@ -5,27 +5,124 @@
 
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>SQL Training</title>
+  <title>SQL Training | Teach Yourself SQL</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.min.js"></script>
-  <script src="script.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">
 
 </head>
 
 <body>
 
-  <h1>SQL Training</h1>
+  <main role="main" class="container">
 
-  <div id="app--main">
+    <div class="row">
 
-  </div> <!-- #app--main -->
+      <div class="col">
 
+        <h1>Teach Yourself SQL</h1>
+
+        <p>The lessons on this page go along with the book <em>Sams Teach Yourself SQL in 10 Minutes</em>.</p>
+
+      </div> <!-- .col -->
+
+    </div> <!-- .row -->
+
+    <div id="app--main" class="row" v-cloak>
+
+      <div class="col">
+
+        <div class="database-resets">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Basic Commands</h5>
+              <button v-on:click="runLesson( 'lesson-0a' )"
+                      type="button"
+                      class="btn btn-primary">
+                SHOW TABLES
+              </button>
+              <button v-on:click="runLesson( 'lesson-0b' )"
+                      type="button"
+                      class="btn btn-primary">
+                DROP ROWS
+              </button>
+              <button v-on:click="runLesson( 'lesson-0c' )"
+                      type="button"
+                      class="btn btn-primary">
+                DROP TABLES
+              </button>
+              <button v-on:click="runLesson()"
+                      type="button"
+                      class="btn btn-primary">
+                CLEAR RESULTS
+              </button>
+            </div>
+          </div> <!-- .card -->
+
+        </div> <!-- .database-resets -->
+
+        <div id="lesson-list" class="lessons">
+
+          <div class="lessons__search">
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fas fa-search"></i>
+                </span>
+              </div>
+              <input
+                type="text"
+                placeholder="Search lessons..."
+                class="form-control lesson-search-field">
+            </div>
+
+          </div> <!-- .lesson-search -->
+
+          <div class="lessons__list">
+
+            <lesson
+              v-for="lesson in lessons"
+              v-bind:lesson="lesson"
+              v-on:run="runLesson"
+              v-bind:key="lesson.id">
+            </lesson>
+
+          </div> <!-- .lessons -->
+
+        </div> <!-- #lesson-list -->
+
+      </div> <!-- .col -->
+
+      <div class="col-9">
+
+        <h3>RENDER:</h3>
+
+        <div v-html="db_render" class="results results--render"></div>
+
+        <h3>QUERY:</h3>
+
+        <div v-html="db_query" class="results results--query"></div>
+
+        <h3>RESPONSE:</h3>
+
+        <div v-text="json_response" class="results results--response"></div>
+
+      </div> <!-- .col-9 -->
+
+    </div> <!-- #app--main .row -->
+
+  </main> <!-- .container -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script src="script.js"></script>
 
 </body>
 

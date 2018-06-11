@@ -1,0 +1,58 @@
+
+body {
+  margin-top: 50px;
+}
+
+#app--main[v-cloak] {
+  display: none;
+}
+
+#app--main {
+  margin-top: 10px;
+}
+
+.database-resets button:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.database-resets .card {
+  margin-bottom: 15px;
+}
+
+.lessons__search {
+  margin-bottom: 15px;
+}
+
+.lessons__list {
+  max-height: 600px;
+  overflow-y: scroll;
+}
+
+.lesson .card {
+  margin-bottom: 15px;
+}
+
+.table {
+  margin-bottom: 0;
+}
+
+.results {
+  margin-bottom: 15px;
+}
+
+.results--query,
+.results--response {
+  background-color: #222;
+  color: #fff;
+  font-family: monospace;
+  padding: 25px;
+  word-break: break-all;
+}
+
+.results--query {
+  color: #91c385;
+}
+
+.results--response {
+  color: #95bccc;
+}

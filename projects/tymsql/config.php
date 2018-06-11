@@ -19,10 +19,12 @@ require_once( ABS_PATH . '/vendor/autoload.php' );
 
 require_once( CREDENTIALS_PATH . '/sql.php' );
 
+$db_name = 'tysql';
+
 $db = new MysqliDb( [
   'host' => DB_HOST,
   'username' => DB_USER,
   'password' => DB_PASS,
-  'db'=> 'tysql',
+  'db'=> $db_name,
   'port' => DB_PORT
 ] );
