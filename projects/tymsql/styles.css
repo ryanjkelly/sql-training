@@ -28,7 +28,7 @@ body {
   overflow-y: scroll;
 }
 
-.lesson .card {
+.lesson:not(:last-child) > .card {
   margin-bottom: 15px;
 }
 
